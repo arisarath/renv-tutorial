@@ -3,4 +3,33 @@ title: "analysis"
 format: html
 editor: visual
 ---
+```{r}
+install.packages("HistData")
+library(HistData)
+library(knitr)
+data("Breslau")
+breslau_filtered <- subset(Breslau, age>=5)
+```
+
+```{r}
+#| label: tbl-breslau-summary
+#| tbl-cap: "Summary of Breslau dataset (age ≥ 5)"
+
+kable(summary(breslau_filtered))
+```
+
+## Result
+```{r}
+#| label: fig-breslau-plot
+#| fig-cap: "Age at death vs Number of deaths in Breslau dataset (age ≥ 5)"
+#| fig-align: center
+
+plot(breslau_filtered$age, breslau_filtered$deaths,
+     type = "b", pch = 19, col = "blue",
+     xlab = "Age at Death (years)",
+     ylab = "Number of Deaths",
+     main = "Deaths by Age in Breslau (age ≥ 5)")
+```
+@fig-breslau-plot shows the at death in Breslau
+
 
